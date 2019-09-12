@@ -1,0 +1,8 @@
+https://github.com/codeplatoon/sum-pairs
+https://github.com/codeplatoon/credit-check
+https://github.com/codeplatoon/anagrams
+https://github.com/codeplatoon/anagrams2
+https://github.com/codeplatoon/char-count
+https://github.com/codeplatoon/palindromes
+https://github.com/codeplatoon/calculate-mode
+https://github.com/codeplatoon/pad-array

@@ -40,3 +40,40 @@ class BoggleBoard:
             row.insert(index, 'Qu')
         except ValueError:
             pass
+
+    def include_word(self, word):
+        word = word.upper()
+        # Flatten lists into a single list for easier iteration
+        nested_array = [self.row0, self.row1, self.row2, self.row3]
+        flat_array = []
+        for list in nested_array:
+            for letter in list:
+                flat_array.append(letter)
+
+        # call a helper recursive function to look for possible match
+        return self.recursive_include_word(flat_array, word)
+        
+
+        # Find all occurences of word's first character, in case of multiple starting points
+        # when character is found - replace character with a filler character and check adjacent letters
+        # N(-4), NE(-3), E(+1), SE(+5), S(+4), SW(+3), W(-1), NW(-5)
+        # return True when word is empty
+    def recursive_include_word(self, flat_array, word):
+        print(f"looking for word {word}")
+        if len(word) == 0:
+            print('Gotcha')
+            return True
+        
+        character_occurence_index = []
+        for i in range(len(flat_array)):
+            if word[0] == flat_array[i] or (word[:2] == 'QU' and flat_array[i] == 'Qu'):
+                character_occurence_index.append(i)
+
+        for index in character_occurence_index:
+            new_flat_array = flat_array.copy()
+            character = new_flat_array.pop(index)
+            new_flat_array.insert(index, "_")
+            print(f"new flat array is {new_flat_array}")
+            found = self.recursive_include_word(new_flat_array, word[len(character):])
+            if found:
+                return True
